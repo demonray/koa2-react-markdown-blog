@@ -1,0 +1,13 @@
+#cover {
+  position: fixed;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-image: url(http://louisbarranqueiro.github.io/hexo-theme-tranquilpeak/assets/images/cover.jpg);
+}
+
+/*# sourceMappingURL=main.css.map*/
