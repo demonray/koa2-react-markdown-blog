@@ -1,0 +1,49 @@
+.pager {
+  padding-left: 0;
+  margin: 20px 0;
+  text-align: center;
+  list-style: none;
+  &:extend(.clearfix all);
+  li {
+    display: inline;
+    margin:0 5px;
+    > a {
+      cursor: pointer;
+      display: inline-block;
+      padding: 5px 14px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 15px;
+    }
+
+    > a:hover,
+    > a:focus {
+      text-decoration: none;
+      background-color: #eee;
+    }
+  }
+
+  .next {
+    > a,
+    > span {
+      float: right;
+    }
+  }
+
+  .previous {
+    > a,
+    > span {
+      float: left;
+    }
+  }
+
+  .disabled {
+    > a,
+    > a:hover,
+    > a:focus{
+      color: #777;
+      cursor: not-allowed;
+      background-color: #fff;
+    }
+  }
+}

@@ -58,7 +58,7 @@ html {
 #header .header-right-icon,
 #header .header-right-picture {
     position: absolute;
-    top: 12.5px;
+    top: 12px;
     right: 20px;
     color: #88909a
 }
@@ -105,7 +105,7 @@ html {
     color: #9eabb3;
     font-size: 1.5rem;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 30px;
     height: auto;
     padding: 20px
 }
@@ -308,4 +308,10 @@ html {
     h6 {
         font-size: 1.45rem
     }
+}
+
+.sharewrap{
+    margin: 16px 0;
+    display: flex;
+    justify-content: center;
 }

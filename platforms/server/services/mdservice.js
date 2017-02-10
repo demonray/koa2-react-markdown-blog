@@ -9,7 +9,7 @@ export function readFile(fileName) {
             resolve(data);
         });
     });
-};
+}
 
 export function readDir(path) {
     return new Promise(function(resolve, reject) {
@@ -21,7 +21,7 @@ export function readDir(path) {
             resolve(data);
         });
     });
-};
+}
 
 
 
@@ -65,11 +65,9 @@ export function getMarkdownData(mdstr) {
         }
     }
     if (data[1]) {
-        let desc = data[1].replace(/^\s*/, '').split(/[\n]+/)[0]; //first paragraph is description
+        let desc = data[1].replace(/^\s*/, '').split(/[\n]{2,}/)[0]; //first paragraph is description
         metaData.Desc = desc || '';
     }
 
-
-    console.log(metaData)
     return { content: data[1] || mdstr, metaData: metaData || null };
 }

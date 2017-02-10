@@ -32,11 +32,9 @@
                 <div class="post-header main-content-wrap">
                     <h1 class="post-title"><%= metaData.Title %></h1>
                     <div class="post-meta">
-                        <time itemprop="datePublished" datetime="2013-01-03T00:30:04+01:00">
-                            Jan 03, 2013
+                        <time itemprop="datePublished">
+                            <%= metaData.Date %>
                         </time>
-                        <span>in </span>
-                        <a class="category-link" href="/hexo-theme-tranquilpeak/categories/tranquilpeak/">tranquilpeak</a>, <a class="category-link" href="/hexo-theme-tranquilpeak/categories/tranquilpeak/features/">features</a>
                     </div>
                 </div>
                 <div class="post-content">
@@ -49,43 +47,22 @@
                         <span class="tagin">TAGGED IN</span>
                         <br>
                           <% metaData.Tags.forEach(function(tag){%>
-                              <a class="post-tag" href="#"><%=tag%></a>
+                              <a class="post-tag"><%=tag%></a>
                           <% }) %>
-                        
                     </div>
-                    <div class="post-actions-wrap">
-                        <nav>
-                            <ul class="post-actions post-action-nav">
-                                <li class="post-action">
-                                    <a class="post-action-btn btn btn--default" href="/hexo-theme-tranquilpeak/2013/02/18/Image-gallery-showcase/" data-tooltip="Image gallery showcase">
-                                        <
-                                    </a>
-                                </li>
-                                <li class="post-action">
-                                    <a class="post-action-btn btn btn--default" href="/hexo-theme-tranquilpeak/2012/04/13/link-post/" data-tooltip="Hexo websites">
-                                        >
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <ul class="post-actions post-action-share">
-                            <li class="post-action">
-                                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://louisbarranqueiro.github.io/hexo-theme-tranquilpeak/hexo-theme-tranquilpeak/2013/01/03/日本語テスト/">
-                                    <i class="icon-google-plus"></i>
-                                </a>
-                            </li>
-                            <li class="post-action">
-                                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://louisbarranqueiro.github.io/hexo-theme-tranquilpeak/hexo-theme-tranquilpeak/2013/01/03/日本語テスト/">
-                                    <i class="icon-facebook"></i>
-                                </a>
-                            </li>
-                            <li class="post-action">
-                                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://louisbarranqueiro.github.io/hexo-theme-tranquilpeak/hexo-theme-tranquilpeak/2013/01/03/日本語テスト/">
-                                    <i class="icon-twitter"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                </div>
+                <div class="sharewrap">
+                <!-- JiaThis Button BEGIN -->
+                <div class="jiathis_style_32x32">
+                    <a class="jiathis_button_cqq"></a>
+                    <a class="jiathis_button_weixin"></a>
+                    <a class="jiathis_button_fb"></a>
+                    <a class="jiathis_button_twitter"></a>
+                    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+                    <a class="jiathis_counter_style"></a>
+                </div>
+                <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+                <!-- JiaThis Button END -->
                 </div>
             </article>
             <footer id="footer" class="main-content-wrap">

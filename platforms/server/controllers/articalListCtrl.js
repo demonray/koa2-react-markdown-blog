@@ -1,4 +1,3 @@
-import markdown from 'markdown-it'
 import path from 'path'
 import { readFile, readDir, getMarkdownData } from '../services/mdservice'
 
@@ -13,7 +12,6 @@ async function getAticalsData(files) {
     });
     let results = [];
 	for (let fileInfo of fileInfos) {
-		console.log(fileInfo)
 	    let file,filestr;
 	    file = await fileInfo.promise;
 	    filestr = file.toString();
