@@ -33,6 +33,15 @@ h3 {
     margin: 3em auto;
 }
 
+.center{
+    text-align: center;
+}
+
+.content .about{
+    color:#444;
+    padding: 10px;
+}
+
 .sidebar {
     color: #fff;
 }
@@ -180,4 +189,9 @@ h3 {
     .nav-item .nav-item-title{
         display: inline-block;
     }
+}
+
+.footer{
+    padding: 20px 0 10px;
+    color: #999;
 }

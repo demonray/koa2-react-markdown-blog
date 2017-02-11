@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="keywords" content="">
+    <meta name="keywords" content="">
     <title>
         <%= title %>
     </title>
@@ -17,61 +17,63 @@
 </head>
 
 <body>
-    <div id="blog">
-        <header id="header" class="header-up">
-            <a href="/"><i id="home" class="icon-home2"></i></a>
-            <div class="header-title">
-                <a class="header-title-link" href="/"><%= title %></a>
+<div id="blog">
+    <header id="header" class="header-up">
+        <a href="/"><i id="home" class="icon-home2"></i></a>
+        <div class="header-title">
+            <a class="header-title-link" href="/"><%= title %></a>
+        </div>
+        <a class="header-right-picture " href="#about">
+            <img class="header-picture" src="http://s.gravatar.com/avatar/e8f553206999a2adf4b0855497eca463?s=80"
+                 alt="Author's picture">
+        </a>
+    </header>
+    <div id="main">
+        <article class="post">
+            <div class="post-header main-content-wrap">
+                <h1 class="post-title"><%= metaData.Title %></h1>
+                <div class="post-meta">
+                    <time itemprop="datePublished">
+                        <%= metaData.Date %>
+                    </time>
+                </div>
             </div>
-            <a class="header-right-picture " href="#about">
-                <img class="header-picture" src="http://s.gravatar.com/avatar/e8f553206999a2adf4b0855497eca463?s=80" alt="Author's picture">
-            </a>
-        </header>
-        <div id="main">
-            <article class="post">
-                <div class="post-header main-content-wrap">
-                    <h1 class="post-title"><%= metaData.Title %></h1>
-                    <div class="post-meta">
-                        <time itemprop="datePublished">
-                            <%= metaData.Date %>
-                        </time>
-                    </div>
+            <div class="post-content">
+                <div class="main-content-wrap markdown-body">
+                    <%- content %>
                 </div>
-                <div class="post-content">
-                    <div class="main-content-wrap markdown-body">
-                            <%- content %>
-                    </div>
+            </div>
+            <div id="post-footer" class="post-footer main-content-wrap">
+                <div class="post-footer-tags">
+                    <span class="tagin">TAGGED IN</span>
+                    <br>
+                    <% metaData.Tags.forEach(function(tag){ %>
+                    <a class="post-tag"><%= tag %></a>
+                    <% }) %>
                 </div>
-                <div id="post-footer" class="post-footer main-content-wrap">
-                    <div class="post-footer-tags">
-                        <span class="tagin">TAGGED IN</span>
-                        <br>
-                          <% metaData.Tags.forEach(function(tag){%>
-                              <a class="post-tag"><%=tag%></a>
-                          <% }) %>
-                    </div>
-                </div>
-                <div class="sharewrap">
+            </div>
+            <div class="sharewrap">
                 <!-- JiaThis Button BEGIN -->
                 <div class="jiathis_style_32x32">
                     <a class="jiathis_button_cqq"></a>
                     <a class="jiathis_button_weixin"></a>
                     <a class="jiathis_button_fb"></a>
                     <a class="jiathis_button_twitter"></a>
-                    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+                    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis"
+                       target="_blank"></a>
                     <a class="jiathis_counter_style"></a>
                 </div>
                 <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
                 <!-- JiaThis Button END -->
-                </div>
-            </article>
-            <footer id="footer" class="main-content-wrap">
+            </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
                 <span class="copyrights">
         Copyrights © 2017 Demon Ray. All Rights Reserved.
     </span>
-            </footer>
-        </div>
+        </footer>
     </div>
+</div>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 if (typeof(require.ensure) !== "function") {
-    require.ensure = function(modules, callback) {
+    require.ensure = function (modules, callback) {
         callback(require);
     }
 }
@@ -23,10 +23,24 @@ export default {
                 })
             }
         }, {
-            path: 'articals',
+            path: 'about',
             getComponent(nextState, cb) {
                 require.ensure([], (require) => {
-                    cb(null, require('./components/articalList'))
+                    cb(null, require('./components/about'))
+                })
+            }
+        }, {
+            path: 'tags',
+            getComponent(nextState, cb) {
+                require.ensure([], (require) => {
+                    cb(null, require('./components/taglist'))
+                })
+            }
+        }, {
+            path: 'tags/:tag',
+            getComponent(nextState, cb) {
+                require.ensure([], (require) => {
+                    cb(null, require('./components/tags'))
                 })
             }
         }]

@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router'
 import {connect} from 'react-redux'
 import {fetchAticals} from '../actions/articalActions'
+import NavList from './navlist'
+import Footer from './footer'
 import '../../public/icomoon/style.css'
-import '../common/css/home.less'
+import '../../public/css/blog.css'
 import '../common/css/pager.less'
 
 @connect(
@@ -25,23 +26,6 @@ export default class Home extends Component {
 
     constructor(props) {
         super(props);
-        this.navList = [{
-            className: 'icon-home2',
-            href: '/',
-            navText: 'Home'
-        }, {
-            className: 'icon-price-tags',
-            href: '/',
-            navText: 'Categories'
-        }, {
-            className: 'icon-search',
-            href: '/',
-            navText: 'Search'
-        }, {
-            className: 'icon-github',
-            href: 'https://github.com/demonray',
-            navText: 'Github'
-        }];
         this.state = {
             pageIndex: 0,
             pageSize: 8
@@ -53,16 +37,6 @@ export default class Home extends Component {
         if (!loaded) {
             this.constructor.fetchData(this.props, this.props.dispatch)
         }
-    }
-
-    goTo(pathname) {
-        if (pathname.indexOf('http') > -1) {
-            location.href = pathname;
-            return;
-        }
-        this.context.router.push({
-            pathname: pathname
-        })
     }
 
     pager(page) {
@@ -77,37 +51,22 @@ export default class Home extends Component {
         return this.props.articals.slice(this.state.pageIndex * this.state.pageSize, (this.state.pageIndex + 1) * this.state.pageSize);
     }
 
+    goTo(pathname) {
+        if (pathname.indexOf('http') > -1) {
+            location.href = pathname;
+            return;
+        }
+        this.context.router.push({
+            pathname: pathname
+        })
+    }
+
 
     render() {
-        let articalList = this.getCurPageList(),
-            navList = this.navList;
+        let articalList = this.getCurPageList();
         return <div>
             <div id="layout" className="pure-g">
-                <div id="cover" className="sidebar pure-u-1 pure-u-md-1-4">
-                    <div className="header">
-                        <img className="avatar-picture"
-                             src="http://s.gravatar.com/avatar/e8f553206999a2adf4b0855497eca463?s=80"
-                             alt="Author's picture"/>
-                        <h4 className="sidebar-profile-name">Demon Ray</h4>
-                        <h1 className="brand-title">A Sample Blog</h1>
-                        <h2 className="brand-tagline">What's past is prologue</h2>
-
-                        <nav className="nav">
-                            <ul className="nav-list">
-                                {navList.map((nav, index) => {
-                                    return <li key={index} className="nav-item">
-                                        <a className="pure-button" onClick={() => {
-                                            this.goTo(nav.href)
-                                        }}><span
-                                            className='nav-item-title'>{nav.navText}</span><i
-                                            className={nav.className}></i></a>
-                                    </li>
-                                })}
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-
+                <NavList/>
                 <div className="content pure-u-1 pure-u-md-3-4">
                     <div>
                         <div className="posts">
@@ -122,6 +81,9 @@ export default class Home extends Component {
                                                 <span>{artical.Date}</span> under
                                                 {artical.Tags.length && artical.Tags.map((tag, index) => {
                                                     return <a className="post-tag"
+                                                              onClick={() => {
+                                                                  this.goTo('/tags/'+tag)
+                                                              }}
                                                               key={tag}> {tag.toUpperCase() + (index == artical.Tags.length - 1 ? '' : ',')}</a>
                                                 })}
                                             </p>
@@ -146,6 +108,7 @@ export default class Home extends Component {
                             </ul>
                         </nav>}
                     </div>
+                    <Footer/>
                 </div>
             </div>
         </div>
