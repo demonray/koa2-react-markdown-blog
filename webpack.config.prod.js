@@ -38,10 +38,11 @@ module.exports = [{
                 include: includes,
                 loader: ExtractTextPlugin.extract({ fallbackLoader: "style-loader", loader: "css-loader?importLoaders=1!less-loader!postcss-loader" })
             },
-            { test: /\.woff2?$/, loader: 'url?limit=10000&minetype=application/font-woff' },
-            { test: /\.ttf$/, loader: 'url?limit=10000&minetype=application/octet-stream' },
-            { test: /\.eot$/, loader: 'file' }, { test: /\.svg$/, loader: 'url?limit=10000&minetype=image/svg+xml' },
-            { test: /\.(png|jpg|jpeg|gif)$/i, loader: 'url?limit=10000&name=[name].[ext]' },
+            { test: /\.woff2?$/, loader: 'url-loader?limit=10000&minetype=application/font-woff' },
+            { test: /\.ttf$/, loader: 'url-loader?limit=10000&minetype=application/octet-stream' },
+            { test: /\.eot$/, loader: 'file-loader' },
+            { test: /\.svg$/, loader: 'url-loader?limit=10000&minetype=image/svg+xml' },
+            { test: /\.(png|jpg|jpeg|gif)$/i, loader: 'url-loader?limit=10000&name=[name].[ext]' },
             { test: /\.json$/, loader: 'json' }, { test: /\.html?$/, loader: 'file?name=[name].[ext]' }
         ]
     },
@@ -103,12 +104,11 @@ module.exports = [{
             { test: /\.ttf$/, loader: 'null' },
             { test: /\.eot$/, loader: 'null' },
             { test: /\.svg$/, loader: 'null' },
-            { test: /\.(png|jpg|jpeg|gif|webp)$/i, loader: 'url?limit=10000' },
+            { test: /\.(png|jpg|jpeg|gif|webp)$/i, loader: 'url-loader?limit=10000' },
             { test: /\.json$/, loader: 'json' }
         ]
     },
     plugins: [
-        new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: { warnings: false }
         }),
