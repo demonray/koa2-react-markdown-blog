@@ -108,6 +108,7 @@ export default class Home extends Component {
                             </ul>
                         </nav>}
                     </div>
+                    <div className="pageInfo">page {this.state.pageIndex+1} of {Math.ceil(this.props.articals.length / this.state.pageSize)}</div>
                     <Footer/>
                 </div>
             </div>

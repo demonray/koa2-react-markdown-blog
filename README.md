@@ -2,6 +2,24 @@
 
 keywords: koa2,react,redux,isomorphic,markdown,blog
 
+## Notes:
+
+This is a simple blog use markdown files,built with react+redux+koa2. just a practice
+
+
+## Develop
+
+```
+npm start
+```
+
+## Production
+
+```
+npm run build
+npm run production
+```
+
 ## 目录结构
 
 ```bash
