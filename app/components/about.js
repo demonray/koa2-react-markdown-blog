@@ -4,13 +4,8 @@ import '../../public/icomoon/style.css'
 import '../../public/css/blog.css'
 
 export default class About extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return <div>
+  render () {
+    return <div>
             <div id="layout" className="pure-g">
                 <NavList/>
                 <div className="content pure-u-1 pure-u-md-3-4">
@@ -27,5 +22,5 @@ export default class About extends Component {
                 </div>
             </div>
         </div>
-    }
+  }
 }

@@ -7,17 +7,12 @@ import '../../public/icomoon/style.css'
 import '../../public/css/blog.css'
 
 export default class About extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return <footer className="footer center">
+  render () {
+    return <footer className="footer center">
             <span className="copyrights">
             Copyrights © 2017 Demon Ray. Some Rights Reserved.
             </span>
         </footer>
-    }
+  }
 
 }

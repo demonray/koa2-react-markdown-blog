@@ -11,24 +11,22 @@ require('babel-core/register')({
   ]
 })
 
-var Koa =require('koa');
-var webpack = require('webpack');
-var http = require('http');
-var path = require('path');
-var KWM = require('koa-webpack-middleware');
-var { devMiddleware, hotMiddleware }=KWM;
-var chokidar = require('chokidar');
-var applyMiddleware = require('../platforms/server/applyMiddleware');
-var config =require('../platforms/common/config');
-var webpackConfig =require('../webpack.config.dev');
-var compiler = webpack(webpackConfig);
+var Koa = require('koa')
+var webpack = require('webpack')
+var http = require('http')
+var path = require('path')
+var KWM = require('koa-webpack-middleware')
+var { devMiddleware, hotMiddleware } = KWM
+var chokidar = require('chokidar')
+var applyMiddleware = require('../platforms/server/applyMiddleware')
+var config = require('../platforms/common/config')
+var webpackConfig = require('../webpack.config.dev')
+var compiler = webpack(webpackConfig)
 
-
-var app = new Koa();
-
+var app = new Koa()
 
 var devMiddlewareInstance = devMiddleware(compiler, {
-  //quiet:true,
+  // quiet:true,
   noInfo: true,
   watchOptions: {
     aggregateTimeout: 300,
@@ -45,7 +43,7 @@ var hotMiddlewareInstance = hotMiddleware(compiler, {
   heartbeat: 10 * 1000
 })
 
-app.env = 'development';
+app.env = 'development'
 
 // error logger
 app.on('error', function (err, ctx) {
@@ -56,7 +54,7 @@ app.use(devMiddlewareInstance)
 app.use(hotMiddlewareInstance)
 applyMiddleware(app)
 
-var server = http.createServer(app.callback());
+var server = http.createServer(app.callback())
 
 var watcher = chokidar.watch([
   path.join(__dirname, '../app'),
@@ -64,10 +62,10 @@ var watcher = chokidar.watch([
 ])
 watcher.on('ready', function () {
   watcher.on('all', function (e, p) {
-    console.log("Clearing module cache");
-    Object.keys(require.cache).forEach(function(id) {
-      if (/[\/\\](app|platforms)[\/\\]/.test(id)) delete require.cache[id];
-    });
+    console.log('Clearing module cache')
+    Object.keys(require.cache).forEach(function (id) {
+      if (/[\/\\](app|platforms)[\/\\]/.test(id)) delete require.cache[id]
+    })
   })
 })
 

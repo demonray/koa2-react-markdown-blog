@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
 @connect(
@@ -7,9 +6,9 @@ import { connect } from 'react-redux'
 )
 
 export default class App extends Component {
-    render() {
-        return (<div>
+  render () {
+    return (<div>
     {this.props.children}
     </div>)
-    }
+  }
 }

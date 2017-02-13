@@ -11,64 +11,62 @@ import '../../public/css/blog.css'
 
 export default class Tags extends Component {
 
-    static contextTypes = {
-        router: React.PropTypes.object.isRequired
-    };
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired
+  };
 
-    static fetchData(state, dispatch) {
-        const fetchTasks = []
-        fetchTasks.push(
+  static fetchData (state, dispatch) {
+    const fetchTasks = []
+    fetchTasks.push(
             dispatch(fetchAticals(state))
         )
-        return fetchTasks
-    }
+    return fetchTasks
+  }
 
-    constructor(props) {
-        super(props);
+  componentDidMount () {
+    const {loaded} = this.props
+    if (!loaded) {
+      this.constructor.fetchData(this.props, this.props.dispatch)
     }
+  }
 
-    componentDidMount() {
-        const {loaded} = this.props
-        if (!loaded) {
-            this.constructor.fetchData(this.props, this.props.dispatch)
+  getTagsData () {
+    let data = {}
+    let tags = []
+    let arr = []
+    this.props.articals.forEach((item) => {
+      let tagItem = item.Tags
+      if (!Array.isArray(item.Tags)) {
+        tagItem = [item.Tags]
+      }
+      tagItem.forEach((tag) => {
+        if (data[tag]) {
+          data[tag].push(item)
+        } else {
+          data[tag] = [item]
         }
+      })
+    })
+
+    for (let key in data) {
+      arr.push({tag: key, tagInfo: data[key]})
     }
 
-    getTagsData() {
-        let data = {}, tags = [], arr = [];
-        this.props.articals.forEach((item) => {
-            let tagItem = item.Tags;
-            if (!Array.isArray(item.Tags)) {
-                tagItem = [item.Tags]
-            }
-            tagItem.forEach((tag) => {
-                if (data[tag]) {
-                    data[tag].push(item)
-                } else {
-                    data[tag] = [item]
-                }
-            })
-        })
+    return arr
+  }
 
-        for (let key in data) {
-            arr.push({tag: key, tagInfo: data[key]})
-        }
-
-        return arr;
-    }
-
-    render() {
-        let data = this.getTagsData();
-        return <div>
+  render () {
+    let data = this.getTagsData()
+    return <div>
             <div id="layout" className="pure-g">
                 <NavList/>
                 <div className="content pure-u-1 pure-u-md-3-4">
                     {
                         data.map((item) => {
-                            return <div key={item.tag}>
+                          return <div key={item.tag}>
                                 <p>{item.tag}</p>
                                 {item.tagInfo.map((artical, index) => {
-                                    return <a key={index} href={'/artical/' + artical.articalId}>{artical.Title}</a>
+                                  return <a key={index} href={'/artical/' + artical.articalId}>{artical.Title}</a>
                                 })}
                             </div>
                         })
@@ -76,5 +74,5 @@ export default class Tags extends Component {
                 </div>
             </div>
         </div>
-    }
+  }
 }
