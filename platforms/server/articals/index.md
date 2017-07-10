@@ -1,5 +1,5 @@
 Title:  随便写写 
-Tags:	随笔
+Tags:	随笔| 生活
 Category:随笔 
 Author: Demon Ray
 Date:   February 15, 2017  

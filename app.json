@@ -1,0 +1,21 @@
+{
+  "apps": [
+    {
+      "name": "mkblog",
+      "script": "./bin/dev.js",
+      "watch": [
+        "server"
+      ],
+      "ignore_watch": [
+        "node_modules",
+        "dist"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}
